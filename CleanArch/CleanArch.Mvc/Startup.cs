@@ -1,4 +1,5 @@
 using CleanArch.Infra.Data.Context;
+using CleanArch.Infra.Ioc;
 using CleanArch.Mvc.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +38,8 @@ namespace CleanArch.Mvc
             services.AddRazorPages();
             services.AddDbContext<UniversityDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("UniversityConnection")));
+           
+            services.RegisterServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

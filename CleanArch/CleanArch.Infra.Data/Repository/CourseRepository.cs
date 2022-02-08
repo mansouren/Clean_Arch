@@ -17,6 +17,13 @@ namespace CleanArch.Infra.Data.Repository
         {
             this.dbContext = dbContext;
         }
+
+        public Course GetCoursebyId(int id)
+        {
+            var res = dbContext.Courses.Find(id);
+            return res;
+        }
+
         public IEnumerable<Course> GetCourses()
         {
             var res = dbContext.Courses;

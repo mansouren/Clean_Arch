@@ -1,16 +1,10 @@
-﻿@page
+﻿@page "{id}"
 @model CleanArch.Mvc.Pages.CourseModel
 @{
 }
-<div class="container body-content">
-    <div class="row course-content">
-        @foreach (var item in Model.CoursVm.Courses)
-        {
-            <div class="course-image-container">
-                <div class="course-image" style="background-image:url(@item.ImageUrl)" />
-            </div>
-            <span>@item.Name</span>
-        }
-
-    </div>
-</div>
+<input type="hidden" asp-for="@Model.Course.Id" />
+<h4>@Model.Course.Name</h4>
+<img class="img-thumbnail"  src="@Model.Course.ImageUrl"/>
+<p>
+    @Model.Course.Description
+</p>

@@ -10,5 +10,6 @@ namespace CleanArch.Domain.Contracts
    public interface ICourseRepositroy
     {
         IEnumerable<Course> GetCourses();
+        Course GetCoursebyId(int id);
     }
 }

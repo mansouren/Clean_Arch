@@ -19,7 +19,8 @@ namespace CleanArch.Infra.Data.Repository
         }
         public IEnumerable<Course> GetCourses()
         {
-            return dbContext.Courses;
+            var res = dbContext.Courses;
+            return res;
         }
     }
 }

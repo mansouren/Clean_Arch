@@ -10,7 +10,7 @@ namespace CleanArch.Infra.Data.Context
 {
     public class UniversityDbContext : DbContext
     {
-        public UniversityDbContext( DbContextOptions<UniversityDbContext> options) : base(options)
+        public UniversityDbContext(DbContextOptions<UniversityDbContext> options) : base(options)
         {
         }
 

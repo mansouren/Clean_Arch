@@ -39,6 +39,8 @@ namespace CleanArch.Mvc
             services.AddDbContext<UniversityDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("UniversityConnection")));
            
+            services.AddControllersWithViews();
+           
             services.RegisterServices();
         }
 
@@ -68,6 +70,9 @@ namespace CleanArch.Mvc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

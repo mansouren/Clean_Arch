@@ -37,4 +37,19 @@ namespace CleanArch.Application.ViewModels
         UserNameIsNotValid,
         Ok
     }
+
+    public class LoginViewModel
+    {
+        [MaxLength(250)]
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [MaxLength(250)]
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        public bool RemeberMe { get; set; }
+    }
 }

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using CleanArch.Application.Interfaces;
 using CleanArch.Application.ViewModels;
 using CleanArch.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CleanArch.Mvc.Pages
 {
+    [Authorize]
     public class CourseModel : PageModel
     {
         private readonly ICourseService courseService;

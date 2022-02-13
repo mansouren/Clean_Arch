@@ -9,6 +9,8 @@ namespace CleanArch.Domain.Contracts
 {
     public interface IUserRepository
     {
+        bool IsExistUser(string email, string password);
+
         void AddUser(User user);
         bool IsExistUserName(string username);
         bool IsExistEmail(string email);

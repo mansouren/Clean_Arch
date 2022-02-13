@@ -13,5 +13,7 @@ namespace CleanArch.Application.Interfaces
         Check CheckUserEmailAndUserNameExist(string email,string username);
       
         int RegisterUser(User user);
+
+        bool IsExistUser(string email, string password);
     }
 }

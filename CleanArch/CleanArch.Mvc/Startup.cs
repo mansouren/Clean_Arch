@@ -1,6 +1,7 @@
 using CleanArch.Infra.Data.Context;
 using CleanArch.Infra.Ioc;
 using CleanArch.Mvc.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,18 +30,27 @@ namespace CleanArch.Mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("UniversityIdentityConnection")));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddRazorPages();
+           
             services.AddDbContext<UniversityDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("UniversityConnection")));
-           
+            
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options =>
+            {
+                options.LoginPath = "/Login";
+                options.ExpireTimeSpan = TimeSpan.FromDays(7);
+                options.LogoutPath = "/Logout";
+            });
+
             services.AddControllersWithViews();
-           
             services.RegisterServices();
         }
 

@@ -27,6 +27,10 @@ namespace CleanArch.Infra.Data.Repository
             return dbContext.User.Any(u => u.Email == email);
         }
 
+        public bool IsExistUser(string email, string password)
+        {
+           return dbContext.User.Any(u => u.Email == email && u.Password == password);
+        }
 
         public bool IsExistUserName(string username)
         {
